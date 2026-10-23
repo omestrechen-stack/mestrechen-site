@@ -69,6 +69,12 @@ strong{font-weight:700}
 @keyframes bob{50%{transform:translateY(6px)}}
 .mountains{position:absolute;left:0;bottom:-1px;width:100%;height:70px;pointer-events:none}
 
+.avatar{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid var(--ouro);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.avatar.lg{width:72px;height:72px}
+.signrow{display:flex;align-items:center;gap:16px;margin-top:10px}
+.portrait{margin:8px auto 34px;max-width:440px;text-align:center}
+.portrait img{width:100%;border-radius:220px 220px 14px 14px;border:2px solid rgba(217,174,82,.7);outline:1px solid rgba(217,174,82,.3);outline-offset:8px;box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.portrait figcaption{margin-top:18px;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#C9BB91}
 /* carta */
 .letter{position:relative}
 .letter .drop::first-letter{float:left;font-family:'Playfair Display',serif;font-weight:800;font-size:76px;line-height:.85;padding:8px 10px 0 0;color:var(--barro)}
@@ -210,6 +216,22 @@ strong{font-weight:700}
 .choice b{display:block;font-family:Montserrat,sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
 .choice .x b{color:#C9BB91}.choice .y b{color:var(--ouro)}
 
+/* popup de saída */
+.exit{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,13,6,.78);backdrop-filter:blur(3px)}
+.exit.open{display:flex;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.exit-box{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;background:linear-gradient(180deg,#F7EFD9,#EADFC4);color:var(--tinta);border:2px solid var(--ouro);border-radius:18px;padding:30px 22px 22px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:pop .3s ease}
+@keyframes pop{from{transform:translateY(20px) scale(.97)}to{transform:none}}
+.exit-x{position:absolute;top:8px;right:10px;width:40px;height:40px;border:0;background:transparent;font-size:28px;line-height:1;color:var(--tinta-2);cursor:pointer;border-radius:8px}
+.exit-x:hover{background:rgba(0,0,0,.06)}
+.exit-box h2{font-size:clamp(26px,6.5vw,32px);margin:8px 0 10px}
+.exit-box p{font-size:15.5px;line-height:1.6;margin:0 0 12px}
+.exit-box img{width:min(260px,80%);margin:4px auto 6px}
+.exit-price{margin:6px 0 16px}
+.exit-price s{opacity:.7;font-size:16px}
+.exit-price b{display:block;font-family:'Playfair Display',serif;font-weight:800;font-size:50px;line-height:1.05;color:var(--barro)}
+.exit-box .btn{width:100%}
+.exit-no{display:inline-block;margin-top:14px;background:none;border:0;font-family:Merriweather,serif;font-size:13.5px;color:var(--tinta-2);text-decoration:underline;cursor:pointer}
 footer{background:var(--noite);color:#A79E85;font-size:13.5px;line-height:1.7;padding:46px 0 120px}
 footer p{margin:0 0 12px}
 footer a{color:#C9BB91}
@@ -256,7 +278,7 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
 <header class="hero dark">
   <div class="wrap">
     <div class="brand">
-      <svg width="30" height="30" viewBox="0 0 110 110" aria-hidden="true"><rect x="10" y="10" width="90" height="90" rx="8" fill="#8A4B2A" transform="rotate(-4 55 55)"/><rect x="20" y="20" width="70" height="70" rx="4" fill="none" stroke="#F0E6CC" stroke-width="3" transform="rotate(-4 55 55)"/><g transform="rotate(-4 55 55)"><path d="M55 30 C74 40 78 62 55 82 C32 62 36 40 55 30 Z" fill="none" stroke="#F0E6CC" stroke-width="3.5"/><path d="M55 36 V78 M55 50 L65 43 M55 60 L45 53 M55 70 L65 63" fill="none" stroke="#F0E6CC" stroke-width="2.6" stroke-linecap="round"/></g></svg>
+      <img class="avatar" src="mestre-chen-avatar.webp" width="320" height="320" alt="Mestre Chen">
       Mestre Chen
     </div>
     <h1>Você levanta da cama <em>em partes?</em></h1>
@@ -362,6 +384,10 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
     <div class="kicker" style="text-align:center">Quem é o velho Chen</div>
     <h2 class="reveal" style="font-size:clamp(30px,6.4vw,46px);text-align:center;margin-top:14px">Na minha aldeia não existia farmácia na esquina</h2>
     <div class="orn"><i></i><b></b><i></i></div>
+    <figure class="portrait reveal">
+      <img src="mestre-chen-varanda.webp" width="760" height="943" alt="Mestre Chen tomando chá na varanda, com as montanhas ao fundo" loading="lazy">
+      <figcaption>O velho Chen e o Chá Antes do Sol</figcaption>
+    </figure>
     <p class="reveal">Nasci numa aldeia sem farmácia, sem hospital e sem pressa. O que havia era a montanha, o fogão de barro e os velhos que tratavam o corpo como se cuida de uma lavoura: <strong>todo dia, com paciência, respeitando a estação.</strong></p>
     <p class="reveal">Eu vi velhos de oitenta anos carregando lenha ladeira acima. Vi mulheres de noventa colhendo folha de chá com as mãos firmes.</p>
     <p class="reveal">Depois desci para a cidade e vi o contrário: <strong>gente de quarenta anos andando como se tivesse cem.</strong> Aquilo me encheu de raiva. E a raiva virou missão.</p>
@@ -556,7 +582,7 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
     </div>
     <p>O velho Chen foi duro com você nesta carta. Fui duro porque ninguém nunca foi. Todo mundo te ofereceu a saída fácil, o “toma isso que passa”, e você viu onde isso te trouxe.</p>
     <p><strong>O seu corpo ainda quer se mover. Ainda lembra como era subir uma escada sem pensar nela.</strong> Vamos devolver isso a ele. Um dia de cada vez.</p>
-    <p class="sign">Mestre Chen</p>
+    <div class="signrow"><img class="avatar lg" src="mestre-chen-avatar.webp" width="320" height="320" alt="" loading="lazy"><p class="sign" style="margin:0">Mestre Chen</p></div>
     <div style="text-align:center;margin-top:34px;display:grid;gap:14px;justify-items:center">
       <a class="btn btn-cta js-kit" href="#" style="width:min(460px,100%)">Quero o Kit Completo · R$ 67</a>
       <a class="btn btn-ghost js-essencial" href="#" style="width:min(460px,100%)">Quero só o livro · R$ 37</a>
@@ -574,6 +600,20 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
   </div>
 </footer>
 
+<!-- =================== POPUP DE SAÍDA =================== -->
+<div class="exit" id="exit" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+  <div class="exit-box">
+    <button class="exit-x" type="button" aria-label="Fechar">&times;</button>
+    <div class="kicker barro">Espere. O velho Chen tem uma última palavra</div>
+    <h2 id="exit-title">Não volte para a caixinha ainda</h2>
+    <p>Eu sei: às vezes o que segura não é a vontade, é o bolso. Por isso, <strong>só nesta visita</strong>, o Kit Completo sai mais barato para você começar amanhã cedo.</p>
+    <img src="kit-completo.webp" width="900" height="727" alt="Kit Completo com os 4 livros do Mestre Chen" loading="lazy">
+    <div class="exit-price"><s>De R$ 67</s><b id="exit-val">R$ 57</b><span style="font-size:13.5px;opacity:.8">os 4 livros · pagamento único · garantia de 7 dias</span></div>
+    <a class="btn btn-cta" id="exit-cta" href="#oferta">Quero o Kit com desconto</a>
+    <button class="exit-no" type="button">Não, prefiro continuar com a dor nas juntas</button>
+  </div>
+</div>
+
 <div class="sticky" id="sticky">
   <div class="info"><b>Kit Completo · R$ 67</b>4 livros · garantia de 7 dias</div>
   <a class="btn btn-cta" href="#oferta">Ver ofertas</a>
@@ -583,6 +623,8 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
 /* ======== COLE AQUI OS SEUS LINKS DE CHECKOUT DA WIAPY ======== */
 var LINK_ESSENCIAL = "https://pay.wiapy.com/H93dAwFLYOjo";
 var LINK_KIT       = "https://pay.wiapy.com/wz0rEHhnLZpV";
+var LINK_DESCONTO  = "COLE_AQUI_O_LINK_DO_KIT_COM_DESCONTO"; /* produto "Kit Completo - Oferta Especial" na Wiapy */
+var PRECO_DESCONTO = "R$ 57";                                 /* precisa bater com o preço desse produto */
 /* ============================================================= */
 
 (function(){
@@ -601,6 +643,50 @@ var LINK_KIT       = "https://pay.wiapy.com/wz0rEHhnLZpV";
   }
   wire(".js-essencial", LINK_ESSENCIAL);
   wire(".js-kit", LINK_KIT);
+
+
+  // ===== popup de saída =====
+  (function(){
+    var box = document.getElementById("exit");
+    if (!box || LINK_DESCONTO.indexOf("http") !== 0) return; // só liga depois que o link for colado
+    document.getElementById("exit-cta").setAttribute("href", withParams(LINK_DESCONTO));
+    document.getElementById("exit-val").textContent = PRECO_DESCONTO;
+    var KEY = "mc_exit_visto", shown = false, armed = false, clicked = false;
+    function seen(){ try { return localStorage.getItem(KEY) && (Date.now() - +localStorage.getItem(KEY) < 3*864e5); } catch(e){ return false; } }
+    function mark(){ try { localStorage.setItem(KEY, String(Date.now())); } catch(e){} }
+    if (seen()) return;
+    setTimeout(function(){ armed = true; }, 12000);              // não aparece nos primeiros 12 segundos
+    document.querySelectorAll(".js-kit,.js-essencial").forEach(function(a){
+      a.addEventListener("click", function(){ clicked = true; }); // quem já foi ao checkout não vê
+    });
+    function open(){
+      if (shown || !armed || clicked) return;
+      shown = true; mark(); box.classList.add("open");
+      var x = box.querySelector(".exit-x"); if (x) x.focus();
+    }
+    function close(){ box.classList.remove("open"); }
+    box.querySelector(".exit-x").addEventListener("click", close);
+    box.querySelector(".exit-no").addEventListener("click", close);
+    box.addEventListener("click", function(e){ if (e.target === box) close(); });
+    document.addEventListener("keydown", function(e){ if (e.key === "Escape") close(); });
+    // computador: o mouse sai pela parte de cima da janela (rumo ao X ou às abas)
+    document.addEventListener("mouseout", function(e){
+      if (!e.relatedTarget && e.clientY <= 0) open();
+    });
+    // celular: rolou bem para cima de repente, depois de ter lido parte da página
+    var lastY = window.scrollY, lastT = Date.now(), maxY = 0;
+    window.addEventListener("scroll", function(){
+      var y = window.scrollY, t = Date.now();
+      maxY = Math.max(maxY, y);
+      var speed = (lastY - y) / Math.max(1, t - lastT);   // px por ms, positivo = subindo
+      if (maxY > document.body.scrollHeight * 0.35 && speed > 1.8 && y < maxY - 600) open();
+      lastY = y; lastT = t;
+    }, {passive:true});
+    // celular e computador: saiu para outra aba ou app e voltou
+    document.addEventListener("visibilitychange", function(){
+      if (document.visibilityState === "visible" && maxY > 600) open();
+    });
+  })();
 
   // revelar ao rolar
   var items = document.querySelectorAll(".reveal");
