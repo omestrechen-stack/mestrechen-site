@@ -615,8 +615,8 @@ footer .t{font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.32em
 </div>
 
 <div class="sticky" id="sticky">
-  <div class="info"><b>Kit Completo · R$ 67</b>4 livros · garantia de 7 dias</div>
-  <a class="btn btn-cta" href="#oferta">Ver ofertas</a>
+  <div class="info"><b>Comece amanhã cedo</b>Garantia de 7 dias</div>
+  <a class="btn btn-cta" href="#oferta">Escolher meu caminho</a>
 </div>
 
 <script>
@@ -726,13 +726,14 @@ var PRECO_DESCONTO = "R$ 57";                                 /* precisa bater c
     });
   });
 
-  // barra fixa: aparece depois do topo e some na área de ofertas
-  var sticky = document.getElementById("sticky"), hero = document.querySelector(".hero"), offer = document.getElementById("oferta");
+  // barra fixa: só aparece DEPOIS que o leitor já passou pelas ofertas
+  // (nada de preço antes de ele ler a história)
+  var sticky = document.getElementById("sticky"), offer = document.getElementById("oferta"), passou = false;
   function onScroll(){
-    var y = window.scrollY, h = hero.offsetHeight;
     var r = offer.getBoundingClientRect();
+    if (r.bottom < 0) passou = true;                       // já leu e desceu além das ofertas
     var inOffer = r.top < window.innerHeight && r.bottom > 0;
-    sticky.classList.toggle("show", y > h*0.8 && !inOffer);
+    sticky.classList.toggle("show", passou && !inOffer);
   }
   window.addEventListener("scroll", onScroll, {passive:true}); onScroll();
 })();
